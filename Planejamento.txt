@@ -1,0 +1,62 @@
+Etapas do Projeto
+
+Aqui está o roadmap que vamos seguir:
+
+🔹 1. Planejamento
+ Definir os objetivos do sistema
+
+ Especificar os tipos de fraude que queremos detectar
+
+ Mapear os módulos (API, ML, Dashboard, etc.)
+
+🔹 2. Design e Arquitetura
+ Criar o fluxograma geral (funcional e técnico)
+
+ Modelar os dados (campos das transações, tabelas)
+
+ Escolher estrutura de diretórios do projeto
+
+🔹 3. Geração de Dados (Simulador)
+ Gerar dados sintéticos com Python + Faker
+
+ Criar cenários fraudulentos e normais
+
+🔹 4. Treinamento do Modelo (ML)
+ Preparar os dados com Pandas
+
+ Treinar um classificador com Scikit-learn
+
+ Salvar o modelo treinado (.pkl)
+
+🔹 5. API com FastAPI
+ Criar API com endpoint /classify
+
+ Carregar o modelo treinado e processar entrada
+
+ Retornar resposta JSON com classificação
+
+🔹 6. Dashboard (Streamlit ou Dash)
+ Mostrar resultados em tempo real
+
+ Apresentar métricas (acurácia, precisão, etc.)
+
+🔹 7. Banco de Dados
+ Usar SQLite no dev
+
+ Adaptar para PostgreSQL se necessário
+
+ Armazenar classificações e logs
+
+🔹 8. Docker + CI/CD
+ Criar Dockerfiles para cada serviço
+
+ Montar docker-compose.yml
+
+ Configurar CI/CD no GitLab
+
+🔹 9. Extras (opcional)
+ Adicionar Neo4j para análise gráfica de fraudes
+
+ Agendar re-treinamento automático
+
+ Documentação e README completo
