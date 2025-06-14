@@ -3,37 +3,40 @@ Etapas do Projeto
 Aqui está o roadmap que vamos seguir:
 
 🔹 1. Planejamento
- Definir os objetivos do sistema
 
- Especificar os tipos de fraude que queremos detectar
+ Definir os objetivos do sistema x
 
- Mapear os módulos (API, ML, Dashboard, etc.)
+ Especificar os tipos de fraude que queremos detectar : transações financeiras x
+
+ Mapear os módulos (API, ML, Dashboard, etc.) /
 
 🔹 2. Design e Arquitetura
- Criar o fluxograma geral (funcional e técnico)
 
- Modelar os dados (campos das transações, tabelas)
+ Criar o fluxograma geral (funcional e técnico) /
 
- Escolher estrutura de diretórios do projeto
+ Modelar os dados (campos das transações, tabelas) /
+
+ Escolher estrutura de diretórios do projeto x 
 
 🔹 3. Geração de Dados (Simulador)
- Gerar dados sintéticos com Python + Faker
 
- Criar cenários fraudulentos e normais
+ Gerar dados sintéticos com Python + Faker  x
+
+ Criar cenários fraudulentos e normais  /
 
 🔹 4. Treinamento do Modelo (ML)
- Preparar os dados com Pandas
+ Preparar os dados com Pandas / 
 
- Treinar um classificador com Scikit-learn
+ Treinar um classificador com Scikit-learn / 
 
- Salvar o modelo treinado (.pkl)
+ Salvar o modelo treinado (.pkl) /
 
 🔹 5. API com FastAPI
- Criar API com endpoint /classify
+ Criar API com endpoint /classify / 
 
- Carregar o modelo treinado e processar entrada
+ Carregar o modelo treinado e processar entrada /
 
- Retornar resposta JSON com classificação
+ Retornar resposta JSON com classificação /
 
 🔹 6. Dashboard (Streamlit ou Dash)
  Mostrar resultados em tempo real
@@ -60,3 +63,13 @@ Aqui está o roadmap que vamos seguir:
  Agendar re-treinamento automático
 
  Documentação e README completo
+
+
+
+ Alterações
+
+4.
+- [ ] Criar `model/train.py` com pipeline de treinamento
+- [ ] Usar regressão logística com Scikit-learn (`LogisticRegression`)
+- [ ] Avaliar com métricas: acurácia, precisão, recall, f1-score
+- [ ] Salvar modelo com `joblib` ou `pickle`

@@ -18,7 +18,7 @@ Desenvolver uma solução capaz de:
 ## 🧰 Tecnologias Utilizadas
 
 ### Linguagem:
-- Python 3.11+
+- Python 3.10+
 
 ### Bibliotecas:
 - **Pandas** – manipulação de dados
