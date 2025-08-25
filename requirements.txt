@@ -1,8 +1,12 @@
 faker
 pandas
+fastapi
+uvicorn
+pydantic
 scikit-learn
 joblib
-
 requests
 streamlit
 plotly
+scikit-learn
+joblib
