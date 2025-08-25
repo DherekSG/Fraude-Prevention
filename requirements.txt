@@ -5,6 +5,7 @@ uvicorn
 pydantic
 scikit-learn
 joblib
+sqlalchemy
 requests
 streamlit
 plotly
