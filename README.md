@@ -106,7 +106,13 @@ pip install -r requirements.txt
 
 # Gerar dados simulados
 python simulator/generate.py
+
+# Iniciar dashboard interativo
+streamlit run dashboard/app.py
 ```
+
+Por padrão, o dashboard lê os dados do arquivo `data/raw/transacoes_sinteticas.csv`.
+Para utilizar uma API ou outro banco, defina a variável `DATA_SOURCE` com a URL ou caminho desejado.
 
 ---
 
