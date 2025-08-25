@@ -2,3 +2,7 @@ faker
 pandas
 scikit-learn
 joblib
+
+requests
+streamlit
+plotly
