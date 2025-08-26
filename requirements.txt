@@ -9,6 +9,4 @@ sqlalchemy
 requests
 streamlit
 plotly
-scikit-learn
-joblib
 pytest
