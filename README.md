@@ -116,15 +116,25 @@ Para utilizar uma API ou outro banco, defina a variável `DATA_SOURCE` com a URL
 
 ---
 
-## 🐳 Docker Compose
-
-Todos os serviços (API, simulador, dashboard e banco de dados opcional) podem ser iniciados com o Docker Compose:
+## 🐳 Docker
 
 ```bash
-docker-compose up --build
+# Build das imagens
+docker-compose build
+
+# Subir todos os serviços
+docker-compose up
+
+# Executar simulador isolado
+docker-compose run --rm simulator
 ```
 
+- API disponível em [http://localhost:8000](http://localhost:8000) (`/docs` para Swagger).
+- Dashboard acessível em [http://localhost:8501](http://localhost:8501).
+
 Os diretórios `./data` e `./model` são montados como volumes para compartilhar dados e modelos entre os containers.
+
+A pipeline CI/CD do projeto utiliza [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) e está definida em [`./.gitlab-ci.yml`](.gitlab-ci.yml).
 
 ---
 
