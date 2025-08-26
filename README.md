@@ -73,12 +73,12 @@ fraude-prevention/
 |-------|-----------|
 | ✅ 1 | Estruturação inicial e arquitetura |
 | ✅ 2 | Simulação de dados com Faker |
-| ⏳ 3 | Treinamento do modelo (Scikit-learn) |
-| ⏳ 4 | Criação da API REST com FastAPI |
-| ⏳ 5 | Integração com banco de dados |
-| ⏳ 6 | Dashboard interativo |
-| ⏳ 7 | Dockerização dos serviços |
-| ⏳ 8 | CI/CD com GitLab |
+| ✅ 3 | Treinamento do modelo (Scikit-learn) |
+| ✅ 4 | Criação da API REST com FastAPI |
+| ✅ 5 | Integração com banco de dados |
+| ✅ 6 | Dashboard interativo |
+| ✅ 7 | Dockerização dos serviços |
+| ✅ 8 | CI/CD com GitLab |
 
 ---
 
