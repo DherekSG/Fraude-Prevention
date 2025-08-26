@@ -61,7 +61,7 @@ fraude-prevention/
 1. **Gerar dados** com o simulador (`simulator/generate.py`)
 2. **Treinar modelo** com `model/train.py`
 3. **Salvar modelo** como `model/model.pkl`
-4. **Executar API** FastAPI para classificar transações
+4. **Executar API** FastAPI para classificar transações *(requer que `model/model.pkl` exista)*
 5. **Visualizar dados** e métricas no dashboard
 6. **Banco de dados** armazena histórico e respostas
 
@@ -107,9 +107,17 @@ pip install -r requirements.txt
 # Gerar dados simulados
 python simulator/generate.py
 
+# Treinar modelo e salvar em model/model.pkl
+python model/train.py
+
+# Iniciar API (requer que model/model.pkl exista)
+uvicorn api.main:app --reload
+
 # Iniciar dashboard interativo
 streamlit run dashboard/app.py
 ```
+
+⚠️ A API só funcionará se o arquivo `model/model.pkl` estiver presente. Gere ou forneça esse modelo antes de iniciar o serviço.
 
 Por padrão, o dashboard lê os dados do arquivo `data/raw/transacoes_sinteticas.csv`.
 Para utilizar uma API ou outro banco, defina a variável `DATA_SOURCE` com a URL ou caminho desejado.
