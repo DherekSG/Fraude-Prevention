@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import numpy as np
 import joblib
@@ -13,6 +14,7 @@ model_path = Path("model/model.pkl")
 model_path.parent.mkdir(exist_ok=True)
 joblib.dump(DummyModel(), model_path)
 
+os.environ["DATABASE_URL"] = "sqlite:///./test.db"
 from api.main import app
 
 
@@ -34,6 +36,9 @@ def test_classify_endpoint():
 
 def teardown_module(module):
     model_path.unlink(missing_ok=True)
-    db_path = Path("fraudes.db")
-    if db_path.exists():
-        db_path.unlink()
+    db_url = os.environ.get("DATABASE_URL", "")
+    if db_url.startswith("sqlite:///"):
+        db_path = Path(db_url.replace("sqlite:///", ""))
+        if db_path.exists():
+            db_path.unlink()
+    os.environ.pop("DATABASE_URL", None)
