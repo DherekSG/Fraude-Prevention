@@ -116,6 +116,18 @@ Para utilizar uma API ou outro banco, defina a variável `DATA_SOURCE` com a URL
 
 ---
 
+## 🐳 Docker Compose
+
+Todos os serviços (API, simulador, dashboard e banco de dados opcional) podem ser iniciados com o Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+Os diretórios `./data` e `./model` são montados como volumes para compartilhar dados e modelos entre os containers.
+
+---
+
 ## 🧪 Testes
 
 O projeto utiliza `pytest` para rodar os testes unitários e de integração.
