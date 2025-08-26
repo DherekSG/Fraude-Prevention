@@ -1,5 +1,4 @@
 import os
-from io import StringIO
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -14,16 +13,8 @@ DATA_PATH = os.path.join(BASE_DIR, "..", "data", "raw", "transacoes_sinteticas.c
 MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
 
 def load_data(path: str) -> pd.DataFrame:
-    """Load dataset handling lines split across two rows."""
-    with open(path, encoding="utf-8") as f:
-        lines = f.read().splitlines()
-    header = lines[0]
-    rows = []
-    for i in range(1, len(lines), 2):
-        if i + 1 < len(lines):
-            rows.append(lines[i].strip() + lines[i + 1].strip())
-    csv_data = "\n".join([header] + rows)
-    return pd.read_csv(StringIO(csv_data))
+    """Load dataset from a CSV file."""
+    return pd.read_csv(path, engine="python")
 
 def prepare_data(df: pd.DataFrame):
     df["valor"] = df["valor"].astype(float)
