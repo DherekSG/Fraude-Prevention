@@ -3,6 +3,7 @@ import random
 import pandas as pd
 import os
 import argparse
+import csv
 from typing import Any, Optional
 
 fake = Faker()
@@ -74,6 +75,6 @@ if __name__ == "__main__":
 
     os.makedirs("data/raw", exist_ok=True)
     caminho_arquivo = "data/raw/transacoes_sinteticas.csv"
-    df.to_csv(caminho_arquivo, index=False)
+    df.to_csv(caminho_arquivo, index=False, quoting=csv.QUOTE_MINIMAL)
 
     print(f"✅ Arquivo gerado com {len(df)} transações em: {caminho_arquivo}")
