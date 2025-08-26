@@ -118,9 +118,10 @@ Para utilizar uma API ou outro banco, defina a variável `DATA_SOURCE` com a URL
 
 ## 🧪 Testes
 
+O projeto utiliza `pytest` para rodar os testes unitários e de integração.
+
 ```bash
-# Em breve: testes de API e validação
-pytest tests/
+pytest
 ```
 
 ---
