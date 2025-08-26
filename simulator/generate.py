@@ -1,12 +1,22 @@
 from faker import Faker
 import random
 import pandas as pd
-from datetime import datetime, timedelta
 import os
+import argparse
+from typing import Any, Optional
 
 fake = Faker()
 
-def gerar_transacao(fraude=False):
+def gerar_transacao(fraude: bool = False) -> dict[str, Any]:
+    """Gera uma transação sintética.
+
+    Args:
+        fraude: Indica se a transação deve ser marcada como fraude.
+
+    Returns:
+        Dicionário contendo os dados da transação.
+    """
+
     return {
         "id_transacao": fake.uuid4(),
         "nome": fake.name(),
@@ -16,12 +26,31 @@ def gerar_transacao(fraude=False):
         "valor": round(random.uniform(10.0, 5000.0), 2),
         "localizacao": fake.city(),
         "ip": fake.ipv4(),
-        "fraude": int(fraude)
+        "fraude": int(fraude),
     }
 
-def gerar_dados(qtd_legit=900, qtd_fraude=100):
+def gerar_dados(
+    qtd_legit: int = 900,
+    qtd_fraude: int = 100,
+    seed: Optional[int] = None,
+) -> pd.DataFrame:
+    """Gera um ``DataFrame`` embaralhado com transações sintéticas.
+
+    Args:
+        qtd_legit: Quantidade de transações legítimas a gerar.
+        qtd_fraude: Quantidade de transações fraudulentas a gerar.
+        seed: Valor de seed para garantir reprodutibilidade.
+
+    Returns:
+        ``DataFrame`` com as transações geradas.
+    """
+
+    if seed is not None:
+        random.seed(seed)
+        fake.seed_instance(seed)
+
     dados = []
-    
+
     for _ in range(qtd_legit):
         dados.append(gerar_transacao(fraude=False))
     for _ in range(qtd_fraude):
@@ -32,10 +61,19 @@ def gerar_dados(qtd_legit=900, qtd_fraude=100):
     return df
 
 if __name__ == "__main__":
-    df = gerar_dados()
+    parser = argparse.ArgumentParser(description="Gerador de transações sintéticas")
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Seed para reprodutibilidade",
+    )
+    args = parser.parse_args()
+
+    df = gerar_dados(seed=args.seed)
 
     os.makedirs("data/raw", exist_ok=True)
     caminho_arquivo = "data/raw/transacoes_sinteticas.csv"
     df.to_csv(caminho_arquivo, index=False)
-    
+
     print(f"✅ Arquivo gerado com {len(df)} transações em: {caminho_arquivo}")
