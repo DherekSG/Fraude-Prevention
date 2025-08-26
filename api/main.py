@@ -12,8 +12,8 @@ from db.database import SessionLocal, init_db
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-MODEL_PATH = Path(__file__).resolve().parents[1] / "model" / "model.pkl"
-model = joblib.load(MODEL_PATH)
+PIPELINE_PATH = Path(__file__).resolve().parents[1] / "model" / "model.pkl"
+pipeline = joblib.load(PIPELINE_PATH)
 
 app = FastAPI()
 
@@ -41,7 +41,7 @@ def on_startup():
 @app.post("/classify")
 def classify(transaction: Transaction, db: Session = Depends(get_db)):
     df = pd.DataFrame([transaction.dict()])
-    proba = model.predict_proba(df)[:, 1][0]
+    proba = pipeline.predict_proba(df)[:, 1][0]
     is_fraud = proba >= 0.5
     logger.info("Transaction classified with probability %.4f", proba)
 
