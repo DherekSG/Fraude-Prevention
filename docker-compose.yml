@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./docker/api
+    ports:
+      - "8000:8000"
+    volumes:
+      - data:/app/data
+      - model:/app/model
+    depends_on:
+      - simulator
+      - db
+    networks:
+      - internal
+
+  simulator:
+    build: ./docker/simulator
+    volumes:
+      - data:/app/data
+    networks:
+      - internal
+
+  dashboard:
+    build: ./docker/dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      - simulator
+    volumes:
+      - data:/app/data
+      - model:/app/model
+    networks:
+      - internal
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fraude
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./data
+      o: bind
+  model:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./model
+      o: bind
+  postgres_data:
+
+networks:
+  internal:
+    driver: bridge
